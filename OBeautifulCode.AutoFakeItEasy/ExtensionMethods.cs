@@ -10,11 +10,11 @@ namespace OBeautifulCode.AutoFakeItEasy
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
-
     using FakeItEasy;
-
     using OBeautifulCode.Equality.Recipes;
     using OBeautifulCode.Math.Recipes;
+    using OBeautifulCode.Type.Recipes;
+    using static System.FormattableString;
 
     /// <summary>
     /// Some extension methods.
@@ -70,7 +70,7 @@ namespace OBeautifulCode.AutoFakeItEasy
             {
                 if (attempts == maxAttempts)
                 {
-                    throw new InvalidOperationException("Unable to create a dummy that satisfies the specified condition.");
+                    throw new InvalidOperationException(Invariant($"Unable to create a dummy '{referenceDummyType?.ToStringReadable()}' that satisfies the specified condition."));
                 }
 
                 if (someDummiesCallName != null)
